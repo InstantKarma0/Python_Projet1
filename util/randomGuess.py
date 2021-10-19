@@ -1,6 +1,6 @@
 from randomGen import randomInt
 
-def randomGuesseur(supp=10):
+def randomGuesser(supp=10):
     """Do a random and make the user guess the randomised number
     
     Optional Keyword Arguments:\n
