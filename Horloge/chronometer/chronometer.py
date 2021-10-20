@@ -2,15 +2,15 @@ from time import time,sleep
 from random import randint
 
 def chronoStart():
-    start = round(time() * 10000) // 100
+    start = round(time() * 100)
     laps = []
     stop = False
     
-    now = int()
-    diff = int()
+    now = 0
+    diff = 0
     
-    while stop == False:
-        now = (round(time() * 10000) // 100) - start
+    while not stop:
+        now = (round(time() * 100)) - start
         print(formatedTime(now))
         sleep(0.05)
         
