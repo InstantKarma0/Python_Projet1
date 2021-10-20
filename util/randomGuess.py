@@ -20,11 +20,11 @@ def randomGuesser(supp=10):
         if guess == target:
             print("Vous avez trouver le nombre mystère!")
 
-        # Case when the number guessed by the user is lower than to the randomised number 
+        # Case when the number guessed by the user is lower than the randomised number 
         elif guess < target:
             print("Le nombre entré est inférieur au nombre mystère.")
             
-        # Case when the number guessed by the user is greater than to the randomised number 
+        # Case when the number guessed by the user is greater than the randomised number 
         elif guess > target:
             print("Le nombre entré est supérieur au nombre mystère")
         # EO if/elif/elif
