@@ -1,54 +1,80 @@
-from time import time,sleep
-from random import randint
+from time import time, sleep
 
-def chronoStart():
-    start = round(time() * 100)
-    laps = []
-    stop = False
-    
-    now = 0
-    diff = 0
-    
-    while not stop:
-        now = (round(time() * 100)) - start
-        print(formatedTime(now))
-        sleep(0.05)
+
+class Chronometer():
+    def __init__(self):
+        self._laps = []
+        self._stop = False
+        self.currentTime = "00:00.:00"
+
+
+
+    def chronoStart(self):
+        start = round(time() * 100)
+        now = 0
         
-
-
-def formatedTime(i):
-    """Return the time on a format MM:ss:cs from a int
-    
-    Keyword Arguments:\n
-    i -- time in centiseconde
-    
-    Return a String"""
-    
-    ANSI_RESET = "\u001B[0m"
-    tb = ["\u001B[30m",
-    "\u001B[31m",
-    "\u001B[32m",
-    "\u001B[33m",
-    "\u001B[34m",
-    "\u001B[35m",
-    "\u001B[36m",
-    "\u001B[37m",]
-    
-    cs = i % 100
-    
-    secondes = (i // 100) % 60
-    
-    minu = i // 6000
-    
-    if cs < 10:
-        cs = "0" + str(cs)
-    if secondes < 10:
-        secondes = "0" + str(secondes)
-    if minu < 10:
-        minu = "0" + str(minu)
+        while not self._stop:
+            print("oui")
+            now = (round(time() * 100)) - start
+            self.currentTime = self.formatedTime(now)
+            sleep(0.05)
         
-    return tb[randint(0,len(tb)-1)] + "{}:{}.{}".format(minu, secondes, cs) + ANSI_RESET
+    def chronoStop(self):
+        self._stop = True
+
+
+    def formatedTime(self,i):
+        """Return the time on a format MM:ss:cs from a int
+        
+        Keyword Arguments:\n
+        i -- time in centiseconde
+        
+        Return a String"""
+        
+        cs = i % 100
+        
+        secondes = (i // 100) % 60
+        
+        minu = i // 6000
+        
+        if cs < 10:
+            cs = "0" + str(cs)
+        if secondes < 10:
+            secondes = "0" + str(secondes)
+        if minu < 10:
+            minu = "0" + str(minu)
+            
+        return "{}:{}.{}".format(minu, secondes, cs)
     
-    
+
+
+
+
+
+    #                   GETTER SETTER
+
+    #   self.stop
+
+    @property
+    def stop(self):
+        return self._stop
+
+    @stop.setter
+    def stop(self, bool):
+        self._stop = bool
+
+    #   self.laps
+
+    @property
+    def laps(self):
+        return self._laps
+
+    @laps.setter
+    def laps(self, newList):
+        self._laps = newList
+
+
+
 if __name__ == "__main__":
-    chronoStart()
+    chrono = Chronometer()
+    chrono.chronoStart()
